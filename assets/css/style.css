@@ -1,0 +1,35 @@
+  .hero-slide { height: clamp(380px, 68vh, 760px); }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25) 40%, rgba(0,0,0,.55)); }
+    .hero-caption { max-width: 680px; }
+    
+    
+    @media (prefers-reduced-motion: reduce) {
+      #heroCarousel .carousel-item { transition: none !important; }
+    }
+
+
+    .reveal {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition:
+    opacity .6s ease-out,
+    transform .6s ease-out;
+  will-change: opacity, transform;
+  /* retraso personalizable por tarjeta */
+  transition-delay: var(--reveal-delay, 2000ms);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accesibilidad: si el usuario prefiere menos animación, desactiva */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
